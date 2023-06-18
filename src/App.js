@@ -23,6 +23,7 @@ function App() {
           <Route path = "/sign-in" element = {<Signin />} />
           <Route path ="/forgot-password"  element = {<ForgotPassword />} />
           <Route path ="/sign-up"  element = {<SignUp />} />
+          
           <Route path = "/profile" element = {<PrivateRoute />}>
             <Route path = "/profile" element = {<Profile />}/>
           </Route>

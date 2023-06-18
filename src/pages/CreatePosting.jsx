@@ -129,7 +129,7 @@ export default function CreatePosting() {
         const docRef = await addDoc(collection(db, "listings"), formDataCopy);
         setLoading(false)
         toast.success("Listing created")
-        navigate(`/profile`)
+        navigate(`/category/${formDataCopy.type}/${docRef.id}`)
 
         
     }
