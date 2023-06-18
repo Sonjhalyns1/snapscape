@@ -1,8 +1,8 @@
 import { getAuth, updateProfile } from 'firebase/auth';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
-import { doc, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, orderBy, query, updateDoc, where } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import {FcLandscape} from "react-icons/fc"
 
@@ -10,6 +10,7 @@ export default function Profile() {
   const auth = getAuth()
   const navigate = useNavigate()
   const[changeDetail, setChangeDetail] = useState(false)
+  const[listings, setListings] = useState(false);
   const[loading, setLoading] = useState(true)
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
@@ -42,6 +43,24 @@ export default function Profile() {
       toast.error("Could not update the profile detail")
     }
   }
+  useEffect(() => {
+    async function fetchUserListings(){
+      const listingRef = collection(db, "listings");
+      const q = query(listingRef, where("userRef", "==", auth.currentUser.uid), orderBy("timestamp", "desc"))
+      const querySnap = await getDocs(q)
+      let listings = [];
+      querySnap.forEach((doc) =>{
+        return listings.push({
+          id: doc.id,
+          data: doc.data()
+        })
+      })
+      setListings(listings)
+      setLoading(false)
+
+    }
+    fetchUserListings()
+  },[])
   return (
     <div className='h-screen w-full bg-[#32383D]'>
     <section className='p-5 max-w-6xl mx-auto flex justify-center items-center flex-col '>
