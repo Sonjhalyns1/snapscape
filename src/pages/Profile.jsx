@@ -72,6 +72,9 @@ export default function Profile() {
       toast.success("Listing has been deleted")
     }
   }
+  function onEdit(listingID){
+    navigate(`/edit-posting/${listingID}`)
+  }
   return (
     <div className='h-screen w-full bg-[#32383D]'>
     <section className='p-5 max-w-6xl mx-auto flex justify-center items-center flex-col '>
@@ -120,6 +123,7 @@ export default function Profile() {
             key = {listing.id}
             id = {listing.id}
             onDelete = {() => onDelete(listing.id)}
+            onEdit={() => onEdit(listing.id)}
             listing = {listing.data}/>
             ))}
         </ul>
