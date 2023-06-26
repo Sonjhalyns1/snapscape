@@ -8,10 +8,11 @@ import SwiperCore, { EffectFade, Autoplay, Navigation, Pagination } from 'swiper
 import 'swiper/css/bundle';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { FaShare, FaMapMarkerAlt, FaBed, FaBath, FaParking, FaChair } from 'react-icons/fa';
+import { FaMapMarkerAlt} from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { getAuth } from 'firebase/auth';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import Contacting from '../components/Contacting';
 
 export default function Listing() {
   const auth = getAuth();
@@ -39,7 +40,7 @@ export default function Listing() {
   }
 
   return (
-    <div className='w-full h-screen bg-[#32383D]'>
+    <div className='gray-backg'>
       <div className='p-4 max-w-4xl lg:mx-auto rounded-lg shadow-lg bg-[#4C555C] lg:space-x-5'>
         <div className='w-full'>
           <Swiper
@@ -66,16 +67,35 @@ export default function Listing() {
         </div>
         <div className='m-4 flex flex-col md:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg  shadow-lg bg-[#4C555C] lg:space-x-5'>
             <div className='w-full h-[300px] lg:h-[400px] z-10 overflow-x-hidden mt-6 lg:mt-0'>
-            <p className='mt-3 mb-3  text-bold text-2xl text-center text-[#1BC6B4]'>
+                <div className='flex items-center'> 
+                    <p className='bg-slate-700 mr-2 w-full max-w-[150px] rounded-md p-1 text-white text-center font-semibold shadow-md'> {listing.type === "public" ? "Public" : "Private"}</p>
+                    <p className='mt-3 mb-3  text-bold text-2xl text-center text-[#1BC6B4]'>
                         {listing.title}
                     </p>
-                    <p  className='flex items-center mt-6 mb-3 justify-center font-semibold text-[#A1B4C4]'><FaMapMarkerAlt className = 'text-green-700 mr-1' />{listing.address}</p>
+                    
+                </div>
+            
+                    <p  className='flex items-center mt-3 mb-3 justify-center font-semibold text-[#A1B4C4]'><FaMapMarkerAlt className = 'text-green-700 mr-1' />{listing.address}</p>
+                    
                     <p className='mt-3 mb-3 text-[#A1B4C4]'>
                         <span className='font-semibold mr-2 text-slate-800'>Description - 
 
                         </span>
                         {listing.description}
                     </p>
+                    {listing.userRef !== auth.currentUser?.uid && !contactLandlord &&(
+                        <div className=''>
+                            <button 
+                            onClick={() => setContactLandlord(true)}
+                            className='px-7 py-3 bg-slate-700 text-white font-medium  text-sm uppercase rounded shadow-md hover:bg-slate-800 hover:shadow-lg focus:bg-slate-800 focus:shadow-lg w-full text-center transition duration-150 ease-in-out '
+                            >
+                                Contact the owner of this post
+                            </button>
+                        </div>
+                    )}
+                    {contactLandlord && (
+                        <Contacting userRef = {listing.userRef} listing= {listing}/>
+                    )}
 
             </div>
             <div className='w-full h-[300px] lg:h-[400px] z-10 overflow-x-hidden mt-6 lg:mt-0'>

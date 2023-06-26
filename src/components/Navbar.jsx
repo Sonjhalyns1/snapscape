@@ -23,10 +23,10 @@ export default function Navbar() {
         }
     };
   return (
-    <div className='bg-[#202529] border-b shadow-sm sticky top-0 z-40'> 
+    <div className='bg-[#202529] border-b border-[#32383D] shadow-sm sticky top-0 z-40'> 
         <header className = "flex justify-between items-center px-3 max-w-6xl mx-auto">
           <div>
-            <img src= {Logo} alt= "logo" className = "h-12 cursor-pointer" onClick={()=>navigate("/")}/>
+            <img src= {Logo} alt= "logo" className = "h-16 cursor-pointer" onClick={()=>navigate("/")}/>
           </div>
           <div>
             <ul className='flex space-x-10'>

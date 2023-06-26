@@ -108,7 +108,7 @@ export default function Profile() {
         type = "submit"
         className='w-full bg-blue-600 text-white uppercase px-7 py-3 text-sm font-medium  rounded-md shadow-md hover:bg-blue-700 transition duration-150 ease-in-out hover:shadow-lg active:bg-blue-800' >
           <Link to = "/create-posting" className= "flex justify-center items-center">
-            <FcLandscape className=' mr-2 text-3xl bg-green-200 rounded-full p-1 border-2' /> Create a Listing
+            <FcLandscape className=' mr-2 text-3xl bg-green-200 rounded-full p-1 border-2' /> Create a Posting
           </Link>
         </button>
       </div>
@@ -116,7 +116,7 @@ export default function Profile() {
     <div className='max-w-6xl px-3 mt-6 mx-auto justify-center'>
       {!loading && listings.length > 0 && (
         <>
-        <h2 className='text-2xl text-center font-semibold'>My Listings</h2>
+        <h6 className='text-2xl text-center font-semibold'>My postings</h6>
         <ul className='sm:grid sm:grid-cols-2 lg:grid-cols-3  '>
           {listings.map((listing) =>(
             <ListingItem 
