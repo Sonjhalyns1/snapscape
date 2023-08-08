@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import CreatePosting from "./pages/CreatePosting";
 import EditPosting from "./pages/EditPosting";
 import Listing from "./pages/Listing";
+import Category from "./pages/Category";
 function App() {
   
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path = "/profile" element = {<PrivateRoute />}>
             <Route path = "/profile" element = {<Profile />}/>
           </Route>
+          <Route path = "/category/:categoryName" element = {<Category/>}/>
           <Route path = "/create-posting" element = {<PrivateRoute />}>
             <Route path = "/create-posting" element = {<CreatePosting />}/>
           </Route>

@@ -113,8 +113,11 @@ export default function CreatePosting() {
           ).catch((error) => {
             setLoading(false);
             toast.error("Images not uploaded");
+            console.error("Error uploading images:", error); // Log the error for debugging
             return;
           });
+          
+          console.log("imgUrls:", imgUrls); // Log the imgUrls array for debugging
         const formDataCopy = {
             ...formData,
             imgUrls,

@@ -76,7 +76,7 @@ export default function Profile() {
     navigate(`/edit-posting/${listingID}`)
   }
   return (
-    <div className='h-screen w-full bg-[#32383D]'>
+    <div className='gray-backg min-h-screen w-full bg-[#32383D]'>
     <section className='p-5 max-w-6xl mx-auto flex justify-center items-center flex-col '>
       <h6 className='text-6xl text-center font-bold'>My Profile</h6>
       <div className='w-full md:w-[50%] mt-10 px-3'>
