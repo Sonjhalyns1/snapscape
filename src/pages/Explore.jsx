@@ -94,7 +94,7 @@ export default function Explore() {
         {privateListings && privateListings.length > 0 && (
           <div className='m-2 mb-6'>
             <h2 className='px-3 text-2xl mt-6 font-semibold text-[#A1B4C4]'>Private locations</h2>
-            <Link to='/category/public'>
+            <Link to='/category/private'>
               <p className='px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out'>
                 View more
               </p>

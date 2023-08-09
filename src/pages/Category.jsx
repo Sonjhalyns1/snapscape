@@ -70,9 +70,9 @@ export default function Category() {
   return (
     <div className='gray-backg min-h-screen w-full bg-[#32383D]'>
         <div className='max-w-6xl mx-auto px-3 mb-6'>
-        <h1 className='text-3xl text-center p-4 mb-10 font-bold'>
-            {params.categoryName === "public" ? "Public locations" : "Places for sell"}
-        </h1>
+        <h6 className='text-3xl text-center p-4 mb-10 font-bold'>
+            {params.categoryName === "public" ? "Public locations" : "Private location"}
+        </h6>
         {loading ? (
             <Spinner  />
         ) : listings  && listings.length > 0 ? (
